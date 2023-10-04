@@ -12,11 +12,11 @@
 
       <div class="dice">
         <p>Player 1</p>
-        <img id="img1" src="./images/dice1.png">
+        <img id="img1" src="./dice1.png">
       </div>
       <div class="dice">
         <p>Player 2</p>
-        <img id="img2" src="./images/dice1.png">
+        <img id="img2" src="./dice1.png">
       </div>
     </div>
     
@@ -31,7 +31,7 @@
     console.log('Function called'); 
     var randomnum1 = Math.floor(Math.random()*6);
     var randomnum2 = Math.floor(Math.random()*6);
-    var imgarr = ["./images/dice1.png","./images/dice2.png","./images/dice3.png","./images/dice4.png","./images/dice5.png","./images/dice6.png"];
+    var imgarr = ["./dice1.png","./dice2.png","./dice3.png","./dice4.png","./dice5.png","./dice6.png"];
     var image1 = document.getElementById('img1');
     image1.setAttribute('src',imgarr[randomnum1]);
     var image2 = document.getElementById('img2');
@@ -39,7 +39,7 @@
 
     if(randomnum1==randomnum2){
       var win = getElementById('result');
-      win.textContent='Dreaw';
+      win.textContent='Draw';
     }
     if(randomnum1 > randomnum2){
       var win = document.getElementById('result');
