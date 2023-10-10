@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        * {
+            background-color: rgb(150, 144, 144);
+            font-size: xx-large;
+        }
+
+        #container {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            background-color: rgb(148, 140, 196);
+        }
+
+        .box,
+        h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px;
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Clock</h1>
+    </center>
+    <div id="container">
+        <p class="box" id="hour"></p>
+        <h1>:</h1>
+        <p class="box" id="min"></p>
+        <h1>:</h1>
+        <p class="box" id="sec"></p>
+    </div>
+
+    <center style="margin-top: 5px;">
+        <button onclick="startclock()">Start</button>
+        <button onclick="stopclock()">Stop</button>
+        <button onclick="resetclock()">Reset</button>
+    </center>
+
+    <script >
+        let hours = document.getElementById("hour");
+        let mins = document.getElementById("min");
+        let sec = document.getElementById("sec");
+
+        var s = 0;
+        var m = 0;
+        var h = 0;
+
+
+        var stopped = false;
+
+        sec.textContent = s;
+        mins.textContent = m;
+        hours.textContent = h;
+
+
+        function secondsInc() {
+            if (s == 60) {
+                s = 0;
+                m += 1;
+            }
+            sec.textContent = s;
+            s = s + 1;
+        }
+
+        function minutesInc() {
+            if (m > 59) {
+                m = 0;
+                h += 1;
+            }
+            mins.textContent = m;
+        }
+        setInterval(minutesInc, 1000);
+        minutesInc();
+
+        function hourInc() {
+            if (m > 59) {
+                h += 1;
+            }
+            if (h == 24) {
+                h = 0;
+            }
+            hour.textContent = h;
+        }
+        setInterval(hourInc, 1000);
+        hourInc();
+
+        setInterval(function () {
+            if (!stopped) {
+                secondsInc();
+            }
+        }, 1000);
+
+        function resetclock() {
+            h = 0;
+            m = 0;
+            s = 0;
+            sec.textContent = s;
+            mins.textContent = m;
+            hours.textContent = h;
+        }
+
+        function stopclock() {
+            stopped = true;
+        }
+
+        function startclock() {
+            stopped = false;
+        }
+
+    </script>
+</body>
+
+</html>
